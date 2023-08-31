@@ -1,2 +1,2 @@
-# chizuru
+# discord bot v3
  
