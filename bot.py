@@ -43,4 +43,12 @@ async def play(ctx):
     await ctx.respond(f"Connected to {ctx.author.voice.channel}")
     await asyncio.sleep(1)
 
+@bot.slash_command(description="Disconnect the bot")
+async def stop(ctx):
+    if ctx.voice_client is not None:
+        await ctx.voice_client.disconnect()
+        await ctx.respond("Disconnected!")
+    else:
+        await ctx.respond("I'm not connected to a voice channel!")
+
 bot.run(TOKEN)
