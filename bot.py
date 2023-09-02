@@ -46,8 +46,9 @@ async def play(ctx):
 @bot.slash_command(description="Disconnect the bot")
 async def stop(ctx):
     if ctx.voice_client is not None:
+        embed = discord.Embed(description="Disconnected!", color=discord.Color.red())
         await ctx.voice_client.disconnect()
-        await ctx.respond("Disconnected!")
+        await ctx.respond(embed=embed)
     else:
         await ctx.respond("I'm not connected to a voice channel!")
 
