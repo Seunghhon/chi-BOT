@@ -32,14 +32,14 @@ async def restart(ctx):
         await ctx.respond(embed=embed)
 
 @bot.slash_command(description="Summon the bot")
-async def play(ctx):
+async def summon(ctx):
     if ctx.author.voice is None:
         embed = discord.Embed(description="You are not in the voice channel!", color=discord.Color.red())
         await ctx.respond(embed=embed)
         return
     if ctx.voice_client is not None:
         return await ctx.voice_client.move_to(ctx.author.voice.channel)
-    await ctx.author.voice.channel.connect()
+    await ctx.author.voice.channel.connect() # connect to the voice channel
     await ctx.respond(f"Connected to {ctx.author.voice.channel}")
     await asyncio.sleep(1)
 
